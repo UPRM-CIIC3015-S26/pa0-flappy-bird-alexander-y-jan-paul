@@ -1,5 +1,6 @@
 import pygame, random
 pygame.init()
+pygame.mixer.init()
 '''
 Welcome to PA0 – Flappy Bird! Throughout this code, you are going to find a recreation of a game you have probably
 heard of before. This is an introductory assignment designed to help you familiarize yourself with what you can expect 
@@ -10,6 +11,12 @@ some of the game mechanics.
 # Setup the screen -->
 screen = pygame.display.set_mode((400, 600))
 pygame.display.set_caption("Flappy Bird")
+
+# Sounds -->
+point_sound = pygame.mixer.Sound("point.wav")
+point_sound.set_volume(0.5)
+hit_sound = pygame.mixer.Sound("hit.wav")
+hit_sound.set_volume(0.6)
 
 # Colors -->
 # NOTE: This is in the RGB (Red, Green, Blue) format
@@ -98,9 +105,11 @@ while running:
             # When you pass through the pipes the score should be updated to the current score + 1. Implement the
             # logic to accomplish this scoring system.
             score = score + 1
+            point_sound.play()
 
         if bird_y > 600 or bird_y < 0:
             game_over = True
+            hit_sound.play()
 
         bird_rect = pygame.Rect(bird_x, bird_y, 30, 30)
         top_pipe_rect = pygame.Rect(pipe_x, 0, pipe_width, pipe_height)
@@ -108,6 +117,7 @@ while running:
 
         if bird_rect.colliderect(top_pipe_rect) or bird_rect.colliderect(bottom_pipe_rect):
             game_over = True
+            hit_sound.play()
 
     screen.fill(pygame.Color('grey12'))
     # TODO 5: A Bird's Color
