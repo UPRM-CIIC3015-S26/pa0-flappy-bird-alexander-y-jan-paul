@@ -10,7 +10,6 @@ some of the game mechanics.
 # Setup the screen -->
 screen = pygame.display.set_mode((400, 600))
 pygame.display.set_caption("Flappy Bird")
-
 # Colors -->
 # NOTE: This is in the RGB (Red, Green, Blue) format
 WHITE = (255, 255, 255)
@@ -80,6 +79,7 @@ while running:
                     # It is your job to find why this is happening! (Hint: What variable stores the y coordinates
                     # of the bird)
                     bird_velocity = 0
+                    bird_y = 256
                     pipe_x = 400
                     score = 0
                     game_over = False
