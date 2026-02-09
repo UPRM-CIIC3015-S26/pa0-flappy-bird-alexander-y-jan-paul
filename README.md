@@ -14,9 +14,9 @@ The project is designed as an introductory programming assignment (PA0). Most of
 ## 👥 Team Information
 
 ### Partner #1
-- **Name:**
-- **Student Number:**
-- **Email:**
+- **Name: Alexander Carril Jordan**
+- **Student Number: 802 - 25 - 5198**
+- **Email: alexander.carril@upr.edu**
 
 ### Partner #2
 - **Name:**
@@ -25,5 +25,5 @@ The project is designed as an introductory programming assignment (PA0). Most of
 
 ## ⭐ Bonus Features (Optional)
 List and briefly describe any additional features or enhancements implemented beyond the basic requirements.
-- Bonus Feature 1
+- Bonus Feature 1: The game has background music able to reset when the player loses. 
 - Bonus Feature 2
