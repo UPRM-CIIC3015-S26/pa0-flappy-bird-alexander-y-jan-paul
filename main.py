@@ -12,6 +12,12 @@ some of the game mechanics.
 screen = pygame.display.set_mode((400, 600))
 pygame.display.set_caption("Flappy Bird")
 
+# Background Music -->
+pygame.mixer.music.load("game_music.wav")
+pygame.mixer.music.set_volume(0.3)
+pygame.mixer.music.play(-1)
+music_stopped = False
+
 # Sounds -->
 point_sound = pygame.mixer.Sound("point.wav")
 point_sound.set_volume(0.5)
@@ -93,6 +99,9 @@ while running:
                     game_over = False
                     game_started = True
                     pipe_height = random.randint(100, 400)
+                    pygame.mixer.music.stop()
+                    pygame.mixer.music.play(-1)
+                    music_stopped = False
 
     if game_started == True and game_over == False:
         bird_velocity = bird_velocity + gravity
@@ -111,6 +120,8 @@ while running:
         if bird_y > 600 or bird_y < 0:
             game_over = True
             hit_sound.play()
+            pygame.mixer.music.stop()
+            music_stopped = True
 
         bird_rect = pygame.Rect(bird_x, bird_y, 30, 30)
         top_pipe_rect = pygame.Rect(pipe_x, 0, pipe_width, pipe_height)
@@ -119,6 +130,8 @@ while running:
         if bird_rect.colliderect(top_pipe_rect) or bird_rect.colliderect(bottom_pipe_rect):
             game_over = True
             hit_sound.play()
+            pygame.mixer.music.stop()
+            music_stopped = True
 
     screen.fill(pygame.Color('grey12'))
     # TODO 5: A Bird's Color
