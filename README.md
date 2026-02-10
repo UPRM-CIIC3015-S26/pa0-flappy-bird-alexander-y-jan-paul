@@ -19,11 +19,11 @@ The project is designed as an introductory programming assignment (PA0). Most of
 - **Email: alexander.carril@upr.edu**
 
 ### Partner #2
-- **Name:Jan Paul Ayala**
-- **802 24 1730**
+- **Name:Jan Paul Ayala García**
+- **802 - 24 - 1730**
 - **Email:*jan.ayala2@upr.edu*
 
 ## ⭐ Bonus Features (Optional)
 List and briefly describe any additional features or enhancements implemented beyond the basic requirements.
 - Bonus Feature 1: The game has background music able to reset when the player loses. 
-- Bonus Feature 2
+- Bonus Feature 2: Added Bird assets, Bird sprite sheet and tube assets, and code to apply the images and animations for the assets.
