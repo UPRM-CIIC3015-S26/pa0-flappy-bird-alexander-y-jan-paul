@@ -21,7 +21,7 @@ The project is designed as an introductory programming assignment (PA0). Most of
 ### Partner #2
 - **Name:Jan Paul Ayala García**
 - **802 - 24 - 1730**
-- **Email:*jan.ayala2@upr.edu*
+- **Email: jan.ayala2@upr.edu**
 
 ## ⭐ Bonus Features (Optional)
 List and briefly describe any additional features or enhancements implemented beyond the basic requirements.
