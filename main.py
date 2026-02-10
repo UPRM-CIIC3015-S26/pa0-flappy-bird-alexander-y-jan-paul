@@ -12,6 +12,20 @@ some of the game mechanics.
 screen = pygame.display.set_mode((400, 600))
 pygame.display.set_caption("Flappy Bird")
 
+# NOW load images (after set_mode)
+bg_img = pygame.image.load("flappy_bird_assets/img/bg.png").convert()
+pipe_img = pygame.image.load("flappy_bird_assets/img/pipe.png").convert_alpha()
+
+bird_imgs = [
+    pygame.image.load("flappy_bird_assets/img/bird1.png").convert_alpha(),
+    pygame.image.load("flappy_bird_assets/img/bird2.png").convert_alpha(),
+    pygame.image.load("flappy_bird_assets/img/bird3.png").convert_alpha()
+]
+
+screen.blit(bg_img, (0, 0))
+pygame.display.update()
+
+
 # Background Music -->
 pygame.mixer.music.load("game_music.wav")
 pygame.mixer.music.set_volume(0.3)
@@ -30,7 +44,6 @@ WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 BLACK = (0, 0, 0)
 PLAYER = (0, 0, 255)
-.
 # Font Size -->
 big_font = pygame.font.SysFont(None, 80)
 small_font = pygame.font.SysFont(None, 30)
@@ -49,6 +62,11 @@ score_y = 10
 bird_x = 50
 bird_y = 300
 bird_velocity = 10
+
+
+bird_index = 0
+bird_animation_timer = 0
+
 # TODO 1: Tweaking the physics
 # Looks like the player is falling too quickly not giving a change to flap it's wing, maybe tweak around with the value of this variable
 gravity =  0.8
@@ -75,8 +93,8 @@ clock = pygame.time.Clock()
 running = True
 while running:
     # TODO 6: Changing the name!
-    # D'oh! This is not yout name isn't follow the detailed instructions on the PDF to complete this task.
-    name = "Alexander Carril Jordan"
+    # D'oh! This is not your name isn't follow the detailed instructions on the PDF to complete this task.
+    name = "Example name"
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -108,6 +126,10 @@ while running:
         bird_y = bird_y + bird_velocity
         pipe_x = pipe_x - pipe_speed
 
+        bird_animation_timer += 1
+        if bird_animation_timer % 5 == 0:
+            bird_index = (bird_index + 1) % len(bird_imgs)
+
         if pipe_x < -70:
             pipe_x = 400
             pipe_height = random.randint(100, 400)
@@ -133,13 +155,15 @@ while running:
             pygame.mixer.music.stop()
             music_stopped = True
 
-    screen.fill(pygame.Color('grey12'))
+    screen.blit(bg_img, (0, 0))
     # TODO 5: A Bird's Color
     # The color of the player is currently white, let's change that a bit! You are free to change the bird's
     # to whatever you wish. You will need to head back to where the PLAYER variable was created and change the values.
-    pygame.draw.rect(screen, PLAYER, (bird_x, bird_y, 30, 30)) # Drawing the bird (You don't need to touch this line!)
-    pygame.draw.rect(screen, GREEN, (pipe_x, 0, pipe_width, pipe_height))
-    pygame.draw.rect(screen, GREEN, (pipe_x, pipe_height + pipe_gap, pipe_width, 600))
+    screen.blit(bird_imgs[bird_index], (bird_x, bird_y)) # Bonus: Bird sprite using images from assets
+    # Bonus background pipes code with image assets ---->
+    top_pipe = pygame.transform.flip(pipe_img, False, True)
+    screen.blit(top_pipe, (pipe_x, pipe_height - top_pipe.get_height()))
+    screen.blit(pipe_img, (pipe_x, pipe_height + pipe_gap))
     score_text = small_font.render(str(score), True, WHITE)
     screen.blit(score_text, (score_x, score_y))
 
