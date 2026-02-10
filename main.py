@@ -29,7 +29,7 @@ hit_sound.set_volume(0.6)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 BLACK = (0, 0, 0)
-PLAYER = (255, 255, 255)
+PLAYER = (0, 0, 255)
 
 # Font Size -->
 big_font = pygame.font.SysFont(None, 80)
